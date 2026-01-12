@@ -44,3 +44,18 @@ app.get('/users', async (req, res)  => {
 app.listen (3000, ()=>{
 console.log('Server listening on port 3000');
 });
+
+
+
+// CHATGPT SUMMARY
+
+// This is an **Express.js server** that:
+
+// - Serves static files from a `public` folder
+// - Has a `/users` endpoint that fetches user data from the JSONPlaceholder API (with a configurable limit)
+// - Adds a 2-second delay before responding
+// - Returns the users as an HTML list formatted with Bootstrap classes
+// - Runs on port 3000
+
+// It's designed to work with the HTMX frontend you showed earlier—when the button is clicked, 
+// this server fetches real user data and returns HTML that HTMX injects into the page.

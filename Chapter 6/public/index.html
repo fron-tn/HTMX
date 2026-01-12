@@ -49,4 +49,22 @@
 
 <!-- CHATGPT SUMMARY -->
 
+<!-- This page shows a user profile card with some text about the user and a button to edit the profile.
+
+The card is styled using Bootstrap, which makes it look clean and professional.
+
+HTMX is included, which allows parts of the page to update without refreshing the whole page.
+
+The card has HTMX attributes (hx-target="this" and hx-swap="outerHTML") that tell it:
+
+“If something updates me, replace the entire card with the new version.”
+
+When the user clicks the “Click To Edit” button:
+
+HTMX sends a GET request to the server at /user/1/edit.
+
+Whatever HTML the server returns will replace the entire card, allowing the profile to 
+switch into an “edit mode.” -->
+
+
 

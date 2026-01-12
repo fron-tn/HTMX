@@ -59,5 +59,7 @@
 
 <!-- CHATGPT SUMMARY -->
 
-<!-- This page displays a Bitcoin price tracker where HTMX automatically sends a request to /get-price
-every second and updates the <h2> element with the latest price returned by the server. -->
+<!-- This page creates a simple live search box for users. As you type into the search input, 
+ HTMX sends the text you typed to the server using a POST request to /search. After a short 
+ 500ms delay, the server's response is placed into the table body (#search-results), 
+ updating the list of matching users without reloading the page. -->

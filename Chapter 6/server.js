@@ -77,3 +77,57 @@ app.get("/user/:id/edit", (req, res) => {
 app.listen(3000, () => {
   console.log("Server listening on port 3000");
 });
+
+
+// CHATGPT SUMMARY
+
+// This Express server lets a user view and edit a profile card using HTMX — without 
+// refreshing the whole page.
+
+// 🟦 1. Basic Setup
+
+// The server uses Express to handle requests.
+
+// It serves static files from the public folder.
+
+// It can read form data and JSON sent from the webpage.
+
+// ✏️ 2. When someone clicks “Edit” on the profile card…
+
+// HTMX sends a GET request to:
+
+// /user/1/edit
+
+
+// The server responds with an HTML form containing:
+
+// A name input (pre-filled with "Greg Lim")
+
+// A bio text area
+
+// A Save Changes button
+
+// A Cancel button
+
+// The form uses HTMX to:
+
+// Send an hx-put request to /user/1 when saved
+
+// Replace itself with the updated profile
+
+// 💾 3. When the “Save Changes” button is clicked…
+
+// HTMX sends a PUT request to:
+
+// /user/1
+
+
+// The server receives the updated:
+
+// name
+
+// bio
+
+// Then it sends back a new profile card containing the updated information.
+
+// HTMX replaces the edit form with this updated card automatically.
