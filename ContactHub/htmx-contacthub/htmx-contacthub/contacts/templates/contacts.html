@@ -1,0 +1,67 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<div class="max-w-7xl mx-auto">
+  <!-- Header with gradient teal color -->
+  <h1 class="text-[3.5rem] font-bold bg-gradient-to-r from-teal-500 to-emerald-500 bg-clip-text text-transparent mb-6">
+    Contact Manager
+  </h1>
+
+  <!-- Blue rounded button -->
+  <button 
+    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg mb-6 transition-colors duration-200"
+    onclick="contact_modal.showModal()">
+    Add New Contact 
+  </button>
+
+  {% include 'partials/add-contact-modal.html' %}
+
+  <!-- Search bar with better styling -->
+  <div class="relative mb-6">
+    <input 
+      type="text" 
+      class="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+      placeholder="Search" 
+      name="search" 
+      hx-get="{% url 'search' %}"
+      hx-trigger="keyup delay:500ms"
+      hx-target="#contacts-list" 
+      hx-indicator="#spinner" 
+      hx-on::before-request="document.getElementById('contacts-list').style.opacity = 0.4;"
+      hx-on::after-request="document.getElementById('contacts-list').style.opacity = 1.0;"/>
+    
+    <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        class="h-5 w-5">
+        <path
+          fill-rule="evenodd"
+          d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+          clip-rule="evenodd" />
+      </svg>
+    </div>
+    {% include 'partials/spinner.html' %}
+  </div>
+
+  <!-- Contact list -->
+  {% include 'partials/contact-list.html' %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('fail', () => {
+      document.getElementById('contact_modal').showModal();
+    });
+
+    document.body.addEventListener('success', () => {
+      let firstContactDiv = document.querySelector('.no-contact-row');
+      if (firstContactDiv) {
+        firstContactDiv.remove();
+      }
+    });
+  });
+</script>
+
+{% endblock %}
