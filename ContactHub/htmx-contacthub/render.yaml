@@ -9,6 +9,7 @@ services:
     plan: free
     name: contacthub
     runtime: python
+    rootDir: ContactHub/htmx-contacthub
     buildCommand: 'pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate'
     startCommand: 'gunicorn contacthub.wsgi:application'
     envVars:
